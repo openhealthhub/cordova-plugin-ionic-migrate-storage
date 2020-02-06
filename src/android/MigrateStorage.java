@@ -89,6 +89,10 @@ public class MigrateStorage extends CordovaPlugin {
         return this.getWebViewRootPath() + "/Local Storage";
     }
 
+    private String getDefaultLocalStorageRootPath() {
+        return this.getWebViewRootPath() + "/Default/Local Storage";
+    }
+
     /**
      * Migrate localStorage from `{prevScheme}://{prevHostname}:{prevPort}` to `{newScheme}://{newHostname}:{newPort}`
      *
@@ -102,8 +106,16 @@ public class MigrateStorage extends CordovaPlugin {
 
         File levelDbDir = new File(levelDbPath);
         if(!levelDbDir.isDirectory() || !levelDbDir.exists()) {
-            this.logDebug("migrateLocalStorage: '" + levelDbPath + "' is not a directory or was not found; Exiting");
-            return;
+            this.logDebug("migrateLocalStorage: '" + levelDbPath + "' is not a directory or was not found;");
+
+            levelDbPath = this.getDefaultLocalStorageRootPath() + "/leveldb";
+            this.logDebug("migrateLocalStorage: levelDbPath: " + levelDbPath);
+
+            levelDbDir = new File(levelDbPath);
+            if(!levelDbDir.isDirectory() || !levelDbDir.exists()) {
+                this.logDebug("migrateLocalStorage: '" + levelDbPath + "' is not a directory or was not found; Exiting");
+                return;
+            }
         }
 
         LevelDB db = new LevelDB(levelDbPath);
