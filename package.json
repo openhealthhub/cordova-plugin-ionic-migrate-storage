@@ -1,5 +1,5 @@
 {
-  "name": "@styleseat/cordova-plugin-ionic-migrate-storage",
+  "name": "cordova-plugin-ionic-migrate-storage",
   "version": "0.3.0",
   "cordova": {
     "id": "cordova-plugin-ionic-migrate-storage",
