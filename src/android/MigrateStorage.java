@@ -30,17 +30,18 @@ public class MigrateStorage extends CordovaPlugin {
     private static final boolean DEBUG_MODE = true;
 
     private static final String TAG = "com.migrate.android";
+
     private static final String DEFAULT_NEW_HOSTNAME = "localhost";
     private static final String DEFAULT_NEW_SCHEME = "http";
-    private static final String DEFAULT_NEW_PORT_NUMBER = "";
+    private static final String DEFAULT_NEW_PORT_NUMBER = "8080";
 
-    private static final String DEFAULT_PREV_HOSTNAME = "localhost";
-    private static final String DEFAULT_PREV_SCHEME = "http";
-    private static final String DEFAULT_PREV_PORT_NUMBER = "8080";
+    private static final String DEFAULT_PREV_HOSTNAME = "";
+    private static final String DEFAULT_PREV_SCHEME = "file";
+    private static final String DEFAULT_PREV_PORT_NUMBER = "";
 
-    private static final String SETTING_NEW_PORT_NUMBER = "WKPort";
-    private static final String SETTING_NEW_HOSTNAME = "Hostname";
-    private static final String SETTING_NEW_SCHEME = "Scheme";
+    private static final String SETTING_NEW_PORT_NUMBER = "MIGRATE_STORAGE_NEW_PORT_NUMBER";
+    private static final String SETTING_NEW_HOSTNAME = "MIGRATE_STORAGE_NEW_HOSTNAME";
+    private static final String SETTING_NEW_SCHEME = "MIGRATE_STORAGE_NEW_SCHEME";
 
     private static final String SETTING_PREV_PORT_NUMBER = "MIGRATE_STORAGE_PREV_PORT_NUMBER";
     private static final String SETTING_PREV_HOSTNAME = "MIGRATE_STORAGE_PREV_HOSTNAME";
@@ -126,6 +127,8 @@ public class MigrateStorage extends CordovaPlugin {
 
         String newLocalStorageBaseURL = this.getNewLocalStorageBaseURL();
         String newLocalStorageMetaKey = "META:" + newLocalStorageBaseURL;
+
+        this.logDebug("migrateLocalStorage: URLS '" + prevLocalStorageKeyPrefix + "' & '" + newLocalStorageBaseURL + "'");
 
         if(db.exists(Utils.stringToBytes(newLocalStorageMetaKey))) {
             this.logDebug("migrateLocalStorage: Found '" + newLocalStorageMetaKey + "' key; Skipping migration");
