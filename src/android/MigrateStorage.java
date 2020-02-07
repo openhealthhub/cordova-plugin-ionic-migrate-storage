@@ -33,15 +33,15 @@ public class MigrateStorage extends CordovaPlugin {
 
     private static final String DEFAULT_NEW_HOSTNAME = "localhost";
     private static final String DEFAULT_NEW_SCHEME = "http";
-    private static final String DEFAULT_NEW_PORT_NUMBER = "8080";
+    private static final String DEFAULT_NEW_PORT_NUMBER = "";
 
     private static final String DEFAULT_PREV_HOSTNAME = "";
     private static final String DEFAULT_PREV_SCHEME = "file";
     private static final String DEFAULT_PREV_PORT_NUMBER = "";
 
-    private static final String SETTING_NEW_PORT_NUMBER = "MIGRATE_STORAGE_NEW_PORT_NUMBER";
-    private static final String SETTING_NEW_HOSTNAME = "MIGRATE_STORAGE_NEW_HOSTNAME";
-    private static final String SETTING_NEW_SCHEME = "MIGRATE_STORAGE_NEW_SCHEME";
+    private static final String SETTING_NEW_PORT_NUMBER = "WKPort";
+    private static final String SETTING_NEW_HOSTNAME = "Hostname";
+    private static final String SETTING_NEW_SCHEME = "Scheme";
 
     private static final String SETTING_PREV_PORT_NUMBER = "MIGRATE_STORAGE_PREV_PORT_NUMBER";
     private static final String SETTING_PREV_HOSTNAME = "MIGRATE_STORAGE_PREV_HOSTNAME";
