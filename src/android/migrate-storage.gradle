@@ -1,3 +1,3 @@
 dependencies {
-    compile files('../../../lib/lib-leveldb-jni-0.0.7.aar')
+    implementation files('../../../lib/lib-leveldb-jni-0.0.7.aar')
 }
